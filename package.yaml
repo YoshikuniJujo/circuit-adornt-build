@@ -21,9 +21,13 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- monads-tf
+- containers
 
 library:
   source-dirs: src
+  exposed-modules:
+    - CircuitBuilder
 
 executables:
   circuit-adornt-build-exe:
