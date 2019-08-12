@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wall -fno-warn-tabs #-}
 
-module CircuitBuilder (
+module Circuit.Adornt.Builder (
 	CircuitBuilder, CBState(..), initCBState,
 	BasicGate(..), gateWires,
 	constGate, idGate, andGate, orGate, notGate, triGate,
