@@ -6,7 +6,7 @@ module Circuit.Adornt.Builder (
 	constGate, idGate, andGate, orGate, notGate, triGate,
 	IWire(..), makeIWire, delay,
 	OWire(..), triIWire, makeOWire, makeOWireTri,
-	Wire11, Wire21, Wire31, Wire41, Wire22,
+	Wire11, Wire21, Wire31, Wire41, Wire51, Wire22,
 	connectWire, FromOWire, BitLen, BitPosIn, BitPosOut,
 	connectWire0, connectWire64, connectWire0_64
 	) where
@@ -22,6 +22,7 @@ type Wire11 = (IWire, OWire)
 type Wire21 = (IWire, IWire, OWire)
 type Wire31 = (IWire, IWire, IWire, OWire)
 type Wire41 = (IWire, IWire, IWire, IWire, OWire)
+type Wire51 = (IWire, IWire, IWire, IWire, IWire, OWire)
 
 type Wire22 = (IWire, IWire, OWire, OWire)
 
