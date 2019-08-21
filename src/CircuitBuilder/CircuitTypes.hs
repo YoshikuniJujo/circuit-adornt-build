@@ -67,7 +67,7 @@ data BasicGate
 	= ConstGate Word64
 	| IdGate IWire | NotGate IWire
 	| AndGate IWire IWire | OrGate IWire IWire
-	| CheatGate [IWire] ([IWire] -> OWire)
+	| CheatGate [IWire] ([Word64] -> Word64)
 --	deriving (Show, Eq, Ord)
 
 gateWires :: BasicGate -> [IWire]
