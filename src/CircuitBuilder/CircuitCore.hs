@@ -13,6 +13,8 @@ module CircuitBuilder.CircuitCore (
 	FromOWire,
 
 	makeIWire, makeOWire, makeOWireTri, triIWire, gateWires,
+
+	BlockName, putNamedBlock
 	) where
 
 import Control.Monad.State

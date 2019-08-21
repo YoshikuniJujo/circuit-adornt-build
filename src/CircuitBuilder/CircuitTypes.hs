@@ -4,7 +4,8 @@ module CircuitBuilder.CircuitTypes (
 	CircuitBuilder, CBState(..), initCBState,
 	IWire(..), makeIWire, OWire(..), triIWire, makeOWire, makeOWireTri,
 	BasicGate(..), gateWires,
-	FromOWire, BitLen, BitPosIn, BitPosOut
+	FromOWire, BitLen, BitPosIn, BitPosOut,
+	BlockName, putNamedBlock
 	) where
 
 import Prelude as P
@@ -41,16 +42,26 @@ makeOWireTri i = (`OWire` Just i) <$> getModify cbsWireNum sccWireNum
 sccWireNum :: CBState -> CBState
 sccWireNum cbs = cbs { cbsWireNum = cbsWireNum cbs + 1 }
 
+type BlockName = String
+
+putNamedBlock :: BlockName -> [IWire] -> [OWire] -> CircuitBuilder ()
+putNamedBlock nm iws ows = modify $ putCbsBlock iws ows nm
+
 data CBState = CBState {
 	cbsWireNum :: Word32,
 	cbsGate :: Map OWire BasicGate,
 	cbsWireConn :: Map IWire [(OWire, FromOWire)],
-	cbsDelay :: Map IWire Word8 }
+	cbsDelay :: Map IWire Word8,
+	cbsBlock :: [([IWire], [OWire], String)] }
 	deriving Show
 
 initCBState :: CBState
 initCBState = CBState {
-	cbsWireNum = 0, cbsGate = empty, cbsWireConn = empty, cbsDelay = empty }
+	cbsWireNum = 0, cbsGate = empty, cbsWireConn = empty, cbsDelay = empty,
+	cbsBlock = [] }
+
+putCbsBlock :: [IWire] -> [OWire] -> String -> CBState -> CBState
+putCbsBlock iws ows nm cbs = cbs { cbsBlock = (iws, ows, nm) : cbsBlock cbs }
 
 data BasicGate
 	= ConstGate Word64

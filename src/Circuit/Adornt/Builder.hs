@@ -8,7 +8,8 @@ module Circuit.Adornt.Builder (
 	OWire(..), triIWire, makeOWire, makeOWireTri,
 	Wire11, Wire21, Wire31, Wire41, Wire51, Wire22,
 	connectWire, FromOWire, BitLen, BitPosIn, BitPosOut,
-	connectWire0, connectWire64, connectWire0_64
+	connectWire0, connectWire64, connectWire0_64,
+	BlockName, putNamedBlock
 	) where
 
 import Data.Word
