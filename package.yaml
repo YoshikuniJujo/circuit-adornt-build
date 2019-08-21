@@ -28,6 +28,7 @@ library:
   source-dirs: src
   exposed-modules:
     - Circuit.Adornt.Builder
+    - Circuit.Adornt.BuilderCore
 
 executables:
   circuit-adornt-build-exe:
