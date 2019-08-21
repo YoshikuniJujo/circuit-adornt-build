@@ -4,7 +4,7 @@
 module CircuitBuilder.CircuitCore (
 	CircuitBuilder,
 	IWire(..), OWire(..), BitLen, BitPosIn, BitPosOut,
-	constGateW, idGate, notGate, andGate, orGate, triGate,
+	constGateW, idGate, notGate, andGate, orGate, triGate, cheatGate,
 	connectWire, delay,
 
 	CBState(..), initCBState,
@@ -79,6 +79,19 @@ triGate = do
 	o <- makeOWireTri b
 	modify $ insGate (IdGate a) o
 	return (a, b, o)
+
+cheatGate :: BlockName -> Int -> Int -> ([IWire] -> [OWire]) -> CircuitBuilder ([IWire], [OWire])
+cheatGate nm iwn own f = do
+	iws <- replicateM iwn makeIWire
+	ows <- mapM (cheatGateIndex f iws) [0 .. own - 1]
+	putNamedBlock nm iws ows
+	return (iws, ows)
+
+cheatGateIndex :: ([IWire] -> [OWire]) -> [IWire] -> Int -> CircuitBuilder OWire
+cheatGateIndex f iws owi = do
+	o <- makeOWire
+	modify $ insGate (CheatGate iws ((!! owi) . f)) o
+	return o
 
 insGate :: BasicGate -> OWire -> CBState -> CBState
 insGate g o cbs = cbs { cbsGate = insert o g $ cbsGate cbs }

@@ -3,7 +3,7 @@
 module Circuit.Adornt.Builder (
 	CircuitBuilder, CBState(..), initCBState,
 	BasicGate(..), gateWires,
-	constGate, idGate, andGate, orGate, notGate, triGate,
+	constGate, idGate, andGate, orGate, notGate, triGate, cheatGate,
 	IWire(..), makeIWire, delay,
 	OWire(..), triIWire, makeOWire, makeOWireTri,
 	Wire11, Wire21, Wire31, Wire41, Wire51, Wire22,

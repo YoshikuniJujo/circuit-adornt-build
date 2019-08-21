@@ -76,3 +76,4 @@ gateWires (IdGate i) = [i]
 gateWires (NotGate i) = [i]
 gateWires (AndGate a b) = [a, b]
 gateWires (OrGate a b) = [a, b]
+gateWires (CheatGate is _) = is
