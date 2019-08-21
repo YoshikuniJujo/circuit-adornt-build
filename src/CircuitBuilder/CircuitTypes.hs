@@ -53,7 +53,7 @@ data CBState = CBState {
 	cbsWireConn :: Map IWire [(OWire, FromOWire)],
 	cbsDelay :: Map IWire Word8,
 	cbsBlock :: [([IWire], [OWire], String)] }
-	deriving Show
+--	deriving Show
 
 initCBState :: CBState
 initCBState = CBState {
@@ -67,7 +67,8 @@ data BasicGate
 	= ConstGate Word64
 	| IdGate IWire | NotGate IWire
 	| AndGate IWire IWire | OrGate IWire IWire
-	deriving (Show, Eq, Ord)
+	| CheatGate [IWire] ([IWire] -> OWire)
+--	deriving (Show, Eq, Ord)
 
 gateWires :: BasicGate -> [IWire]
 gateWires (ConstGate _) = []
