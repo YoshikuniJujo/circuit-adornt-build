@@ -12,7 +12,7 @@ module Circuit.Adornt.BuilderCore (
 	-- * Input and Output Wire
 	IWire(..), makeIWire, delay,
 	OWire(..), triIWire, makeOWire, makeOWireTri,
-	Wire11, Wire21, Wire31, Wire41, Wire51, Wire22,
+	Wire11, Wire21, Wire31, Wire41, Wire51, Wire22, Wire32,
 
 	-- * Wire Connection
 	connectWire, connectWire0, connectWire64, connectWire0_64,
@@ -36,6 +36,7 @@ type Wire41 = (IWire, IWire, IWire, IWire, OWire)
 type Wire51 = (IWire, IWire, IWire, IWire, IWire, OWire)
 
 type Wire22 = (IWire, IWire, OWire, OWire)
+type Wire32 = (IWire, IWire, IWire, OWire, OWire)
 
 connectWire64 :: OWire -> IWire -> CircuitBuilder ()
 connectWire64 o i = connectWire (o, 64, 0) (i, 64, 0)
