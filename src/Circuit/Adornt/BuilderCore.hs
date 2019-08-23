@@ -2,7 +2,9 @@
 
 module Circuit.Adornt.BuilderCore (
 	-- * Circuit Builder
-	CircuitBuilder, CBState(..), FromOWire, initCBState,
+	CircuitBuilder,
+	CBState, cbsWireNum, cbsGate, cbsWireConn, cbsDelay, cbsBlock,
+	FromOWire, initCBState,
 
 	-- * Basic Gate
 	BasicGate(..),
