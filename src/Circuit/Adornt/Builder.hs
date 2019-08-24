@@ -2,10 +2,9 @@
 
 module Circuit.Adornt.Builder (
 	-- * Circuit Builder
-	CircuitBuilder, CBState, initCBState,
+	CircuitBuilder,
 
 	-- * Basic Gate
-	BasicGate,
 	constGate, idGate, andGate, orGate, notGate, triGate, cheatGate,
 
 	-- * Input and Output Wire
