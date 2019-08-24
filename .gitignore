@@ -2,3 +2,4 @@
 circuit-adornt-build.cabal
 *~
 .html/
+.*.swp
